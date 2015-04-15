@@ -36,6 +36,10 @@ GameConfig::GameConfig(int argc, char** argv)
 
 }
 
+GameConfig::GameConfig(){
+    this->outFile = "DefaultOutFile.txt";
+}
+
 GameConfig::~GameConfig()
 {
 
@@ -53,13 +57,24 @@ std::vector< std::vector<int> >& GameConfig::gridConfiguration(){
     return gridConfig;
 }
 
+void GameConfig::printToFile(std::vector< std::vector<int> >& matrix){
+    ofstream outFile(this->outFile, ofstream::app);
+    for(auto line: matrix){
+        for(auto cell: line){
+            outFile << cell << " ";
+        }
+        outFile << "\n";
+    }
+}
+
+
 std::ostream& GameConfig::operator<<(std::ostream& os){
 
     os << "GameConfig: " << endl;
-    os << "Grid: " << gc.grid <<endl;
-    os << "Iterations: " << gc.iterations << endl;
-    os << "Config File: " << gc.configFile << endl;
-    os << "Output File: " << gc.outFile << endl;
+    os << "Grid: " << grid <<endl;
+    os << "Iterations: " << iterations << endl;
+    os << "Config File: " << configFile << endl;
+    os << "Output File: " << outFile << endl;
 
     return os;
 }

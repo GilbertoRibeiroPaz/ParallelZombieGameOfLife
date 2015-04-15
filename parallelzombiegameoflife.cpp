@@ -111,6 +111,19 @@ ParallelZombieGameOfLife::ParallelZombieGameOfLife(int grid, int iterations, vec
     printMatrix();
 }
 
+///
+/// \brief ParallelZombieGameOfLife::ParallelZombieGameOfLife
+/// Construct the game using the game config parser.
+/// \param gf
+///
+ParallelZombieGameOfLife::ParallelZombieGameOfLife(GameConfig gf){
+    grid = gf.gridSize();
+    iterations = gf.numberOfIterarions();
+    m = gf.gridConfiguration();
+
+    cout << "Initial configuration" << endl;
+    printMatrix();
+}
 
 ////
 /// \brief ParallelZombieGameOfLife::run
@@ -236,7 +249,7 @@ void ParallelZombieGameOfLife::run(){
                      */
                 }
 
-                // Apply rules base on neibors
+                // Apply rules based on neibors
                 applyRule(m[i][j], neibors);
 
             } // j
@@ -247,6 +260,10 @@ void ParallelZombieGameOfLife::run(){
 
 }
 
+
+void ParallelZombieGameOfLife::runParallel(int initIndex, int finalIndex){
+
+}
 
 ///
 /// \brief ParallelZombieGameOfLife::~ParallelZombieGameOfLife

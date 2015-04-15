@@ -16,11 +16,13 @@ private:
 
 public:
     GameConfig(int argc, char** argv);
+    GameConfig();
     ~GameConfig();
 
     int gridSize();
     int numberOfIterarions();
     std::vector< std::vector<int> >& gridConfiguration();
+    void printToFile(std::vector< std::vector<int> >& matrix);
     std::ostream& operator<<(std::ostream& os);
 };
 

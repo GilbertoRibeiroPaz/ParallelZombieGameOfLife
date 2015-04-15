@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include "gameconfig.h"
 
 class ParallelZombieGameOfLife
 {
@@ -16,8 +17,9 @@ private:
 
 public:
     ParallelZombieGameOfLife(int grid, int iterations, std::vector< std::vector<int> >& gridConfig);
+    ParallelZombieGameOfLife(GameConfig gf);
     void run();
-    //void runParallel(int )
+    void runParallel(int initIndex, int finalIndex);
     ~ParallelZombieGameOfLife();
 
     // For each iteration, each thread will pick a boundage to  cycle throuth
